@@ -3,6 +3,7 @@ const b = [2, -34, 56, 12, -12, 13, 23, -90, 54, 45];
 
 const MergeThenSort = () => {
   // merge array
+  
   for (let i = 0; i < b.length; i++) {
     a.push(b[i]);
   }
@@ -17,7 +18,10 @@ const MergeThenSort = () => {
       }
     }
   }
+
+
   console.log(a);
+  
 };
 
 MergeThenSort();
