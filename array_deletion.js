@@ -13,10 +13,10 @@ const DeletionFromArray = () => {
     console.log(arr)
 }
 
-const DefaltMethod =  () => {
+const DefaultMethod =  () => {
     arr.splice(pos , 1)
     console.log(arr)
 }
 
 // DeletionFromArray()
-DefaltMethod()
+DefaultMethod()

@@ -4,11 +4,11 @@
 // const arr1 = [23, 22, 35, 54, 98];
 const arr1 = [-10, 22, 98, -23, -90, 22, 35, 54, 98];
 
-const BubbleSortArray = () => {
+const BubbleSortArray = (arr1) => {
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr1.length; j++) {
       if (arr1[j] > arr1[j + 1]) {
-        const temp = arr1[j];
+        let temp = arr1[j];
         arr1[j] = arr1[j + 1];
         arr1[j + 1] = temp;
       }
@@ -17,7 +17,12 @@ const BubbleSortArray = () => {
   console.log(arr1);
 };
 
-BubbleSortArray();
+const BubbleSortArray1 = (arr1) => {
+  const filtered = arr1.sort((a, b) => a - b);
+  console.log(filtered);
+};
+
+BubbleSortArray1(arr1);
 
 // traverse from left and compare adjacent elements and the higher one is placed at right side.
 // In this way, the largest element is moved to the rightmost end at first.

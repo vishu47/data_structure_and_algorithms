@@ -1,18 +1,18 @@
 let money = 250;
 let apple = 0;
 
-const BuyApple = (x) => {
-  if (x > 0) {
-    console.log("i have left with", x, "rs", "have", apple , 'apples');
-    BuyMore(x);
+const BuyApple = (rs) => {
+  if (rs >= 0) {
+    console.log(`i have left with ${rs} rupees and have ${apple} `);
+    buyMore(rs);
   } else {
-    console.log("Not have much money!");
+    console.log("not have enough money!!!");
   }
 };
 
-const BuyMore = (x) => {
+const buyMore = (rs) => {
   apple++;
-  BuyApple(x - 20);
+  BuyApple(rs - 24);
 };
 
 BuyApple(money);
