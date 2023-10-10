@@ -3,7 +3,7 @@ const arr2 = [-11,22,13,54,98]
 const arr3 = []
 
 
-const DefaultMegingMethodMethod = () => {
+const DefaultMergingMethodMethod = () => {
   const  an = [...arr1,...arr2]
     for (let i = 0; i < an.length; i++) {
       if(!arr3[i].includes(an[i])){
@@ -14,4 +14,4 @@ const DefaultMegingMethodMethod = () => {
 }
 
 
-DefaultMegingMethodMethod()
+DefaultMergingMethodMethod()
