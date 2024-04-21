@@ -116,6 +116,46 @@ function equilibriumPoint(a, n) {
 }
 
 // equilibriumPoint([4, 5, 7], 3);
-equilibriumPoint([1, 3, 5, 2, 2], 5);
+// equilibriumPoint([1, 3, 5, 2, 2], 5);
+
+// Given an expression string x. Examine whether the pairs and the orders of {,},(,),[,] are correct in exp.
+// For example, the function should return 'true' for exp = [()]{}{[()()]()} and 'false' for exp = [(]).
+
+// Note: The drive code prints "balanced" if function return true, otherwise it prints "not balanced".
+
+function ispar(x) {
+  //your code here
+  let s = 0;
+  let m = 0;
+  let b = 0;
+  for (let i = 0; i < x.length; i++) {
+    if ("{" === x[i] || "}" === x[i]) {
+      m += 1;
+    } else if ("(" === x[i] || ")" === x[i]) {
+      s += 1;
+    } else if ("[" === x[i] || "]" === x[i]) {
+      b += 1;
+    }
+  }
+  console.log(
+    s,
+    m,
+    b,
+    b % 2,
+    m % 2,
+    s % 2,
+    b % 2 === 0 && m % 2 === 0 && s % 2 === 0
+  );
+
+  if (b % 2 === 0 && m % 2 === 0 && s % 2 === 0) {
+    console.log("balanced")
+    return "balanced";
+  } else {
+    console.log("not balanced")
+    return "not balanced";
+  }
+}
+
+ispar("([])");
 
 console.log("run practice file");
