@@ -72,25 +72,50 @@ function leaders(arr, n) {
 
 function equilibriumPoint(a, n) {
   // this approch is good and brrot fource approch but got more time to execute have to optimied this code
-  let f = 0;
-  let b = 0;
-  let out = -1;
+  // let f = 0;
+  // let b = 0;
+  // let out = -1;
+  // for (let i = 0; i < a.length; i++) {
+  //   for (let j = i + 1; j < a.length; j++) {
+  //     f += a[j];
+  //   }
+  //   for (let k = i - 1; k >= 0; k--) {
+  //     b += a[k];
+  //   }
+  //   if (f === b) {
+  //     return (out = i + 1);
+  //   }
+  //   b = 0;
+  //   f = 0;
+  // }
+  // console.log(out)
+  // return out;
+
+  // optimal solutions
+
+  let ls = 0;
+  let totalSum = a.reduce((sum, current) => {
+    return sum + current;
+  }, 0);
+
+  console.log(totalSum, "totalSums");
+
   for (let i = 0; i < a.length; i++) {
-    for (let j = i + 1; j < a.length; j++) {
-      f += a[j];
+    totalSum -= a[i];
+
+    if (totalSum === ls) {
+      console.log(i, "i");
+      return i;
     }
-    for (let k = i - 1; k >= 0; k--) {
-      b += a[k];
-    }
-    if (f === b) {
-      return (out = i + 1);
-    }
-    b = 0;
-    f = 0;
+
+    ls += a[i];
   }
-  return out;
+
+  console.log(-1, "-1");
+  return -1;
 }
 
-equilibriumPoint([4, 5, 7], 3);
+// equilibriumPoint([4, 5, 7], 3);
+equilibriumPoint([1, 3, 5, 2, 2], 5);
 
 console.log("run practice file");
