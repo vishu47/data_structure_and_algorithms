@@ -125,37 +125,86 @@ function equilibriumPoint(a, n) {
 
 function ispar(x) {
   //your code here
-  let s = 0;
-  let m = 0;
-  let b = 0;
+  // let s = 0;
+  // let m = 0;
+  // let b = 0;
+  // for (let i = 0; i < x.length; i++) {
+  //   if ("{" === x[i] || "}" === x[i]) {
+  //     m += 1;
+  //   } else if ("(" === x[i] || ")" === x[i]) {
+  //     s += 1;
+  //   } else if ("[" === x[i] || "]" === x[i]) {
+  //     b += 1;
+  //   }
+  // }
+  // console.log(
+  //   s,
+  //   m,
+  //   b,
+  //   b % 2,
+  //   m % 2,
+  //   s % 2,
+  //   b % 2 === 0 && m % 2 === 0 && s % 2 === 0
+  // );
+
+  // if (b % 2 === 0 && m % 2 === 0 && s % 2 === 0) {
+  //   console.log("balanced");
+  //   return true;
+  // } else {
+  //   console.log("not balanced");
+  //   return false;
+  // }
+
+  // optimal solution
+  let a = [];
+  let comp = { "(": ")", "{": "}", "[": "]" };
+
   for (let i = 0; i < x.length; i++) {
-    if ("{" === x[i] || "}" === x[i]) {
-      m += 1;
-    } else if ("(" === x[i] || ")" === x[i]) {
-      s += 1;
-    } else if ("[" === x[i] || "]" === x[i]) {
-      b += 1;
+    if (x[i] === "[" || x[i] === "{" || x[i] === "(") {
+      a.push(x[i]);
+    } else {
+      const pop = a.pop();
+      if (!pop || comp[pop] !== x[i]) {
+        return false;
+      }
     }
   }
-  console.log(
-    s,
-    m,
-    b,
-    b % 2,
-    m % 2,
-    s % 2,
-    b % 2 === 0 && m % 2 === 0 && s % 2 === 0
-  );
-
-  if (b % 2 === 0 && m % 2 === 0 && s % 2 === 0) {
-    console.log("balanced")
-    return "balanced";
-  } else {
-    console.log("not balanced")
-    return "not balanced";
-  }
+  return a.length === 0;
 }
 
-ispar("([])");
+// ispar("]");
+
+// Given an array Arr of size N, print the second largest distinct element from an array.
+//  If the second largest element doesn't exist then return -1.
+
+function print2largest(arr, n) {
+  //code here
+  const sort = arr.sort((a, b) => a - b);
+  const fin = [...new Set(sort)];
+  // console.log(fin[fin.length - 2], fin, fin.length);
+  return fin[fin.length - 2] ? fin[fin.length - 2] : -1;
+}
+
+// print2largest([35, 35, 1, 10, 34, 1]);
+
+// Given an array of N integers, and an integer K, find the number of pairs of
+// elements in the array whose sum is equal to K.
+
+function getPairsCount(arr, n, k) {
+  // not optimal solution
+  // let count = 0;
+  // for (let i = 0; i < arr.length; i++) {
+  //   for (let j = i + 1; j < arr.length; j++) {
+  //     const runsum = arr[i] + arr[j];
+  //     if (runsum === k) {
+  //       count += 1;
+  //     }
+  //   }
+  // }
+  // return count
+  // console.log(count);
+}
+
+getPairsCount([1, 11, 12, 13], 4, 2);
 
 console.log("run practice file");
