@@ -201,10 +201,54 @@ function getPairsCount(arr, n, k) {
   //     }
   //   }
   // }
-  // return count
   // console.log(count);
+  // return count
+
+  // two pointer approch
+
+  let h = new Map();
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let find = k - arr[i];
+    if (h.has(find)) {
+      count += h.get(find);
+    }
+    h.set(arr[i], (h.get(arr[i]) || 0) + 1);
+  }
+  console.log(count);
+  return count;
 }
 
-getPairsCount([1, 11, 12, 13], 4, 2);
+// getPairsCount([1, 1, 1, 1], 4, 2);
+
+// Given a string S, check if it is palindrome or not.
+
+function isPalindrome(S) {
+  // time complaxity
+  // const rev = s.split('').reverse().join("");
+  // if (rev.toLowerCase() === s.toLowerCase()) {
+  //   // console.log(true);
+  //   return 1;
+  // } else {
+  //   // console.log(false);
+  //   return 0;
+  // }
+
+  // two pointer approch
+
+  let left = 0;
+  let right = S.length - 1;
+
+  while (left < right) {
+    if (S[left] !== S[right]) {
+      return 0;
+    }
+    left++;
+    right--;
+  }
+  return 1;
+}
+
+isPalindrome("abc");
 
 console.log("run practice file");
