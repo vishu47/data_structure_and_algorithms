@@ -249,6 +249,86 @@ function isPalindrome(S) {
   return 1;
 }
 
-isPalindrome("abc");
+// isPalindrome("abc");
 
+// Given an unsorted array arr[] of size N. Rotate the array to the left
+// (counter-clockwise direction) by D steps, where D is a positive integer.
+
+function reverseArry(arr, start, end) {
+  while (start < end) {
+    // console.log(start, end);
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+}
+
+function rotateArr(arr, d, n) {
+  // code here
+  // not optimal method
+  // const a = [];
+  // for (let i = d; i < arr.length; i++) {
+  //   a.push(arr[i]);
+  // }
+  // for (let i = 0; i < d; i++) {
+  //   a.push(arr[i]);
+  // }
+
+  // return a;
+
+  // for optimal, solution it modify the original array
+  // reverse the array from 0 to d
+  // Calculate the effective rotation (d % n)
+  d = d % n;
+
+  reverseArry(arr, 0, d - 1);
+  // reverse the array from d to length of array
+  reverseArry(arr, d, arr.length - 1);
+  // reverse the whole array
+  reverseArry(arr, 0, arr.length - 1);
+
+  return arr;
+}
+
+// console.log(
+//   rotateArr(
+//     [
+//       25, 6, 20, 55, 69, 5, 50, 63, 61, 41, 87, 80, 2, 96, 77, 70, 12, 43, 31,
+//       8, 64, 41, 68, 18, 95, 79, 52, 74, 1, 98, 3, 26, 3, 74, 32, 23, 79, 81,
+//       37, 39, 21, 24, 18, 22, 71, 47, 44,
+//     ],
+//     77,
+//     47
+//   )
+// );
+
+// Given a String S, reverse the string without reversing its individual words.
+//  Words are separated by dots.
+
+function reverseWords(s) {
+  // console.log(s.split(".").join("."));
+  return s.split(".").reverse().join(".");
+}
+
+// console.log(reverseWords("much.very.program.this.like.i"));
+
+// Given two strings a and b consisting of lowercase characters.
+// The task is to check whether two given strings are an anagram of each other or not.
+// An anagram of a string is another string that contains the same characters,
+// only the order of characters can be different. For example, act and tac are an
+// anagram of each other. Strings a and b can only contain lower case alphabets.
+
+function isAnagram(a, b) {
+  const aa = a.split("").sort().join("");
+  const bb = b.split("").sort().join("");
+  if (aa === bb) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isAnagram("geeksforgeeks", "forgeeksgeeks"));
 console.log("run practice file");
