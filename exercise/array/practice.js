@@ -330,5 +330,62 @@ function isAnagram(a, b) {
   }
 }
 
-console.log(isAnagram("geeksforgeeks", "forgeeksgeeks"));
+// console.log(isAnagram("geeksforgeeks", "forgeeksgeeks"));
+
+// Given a sorted array containing only 0s and 1s, find the transition point, i.e.,
+// the first index where 1 was observed, and before that, only 0 was observed.
+
+function transitionPoint(arr, n) {
+  if (arr.length === 1) return i;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 1) return i;
+  }
+  return -1;
+}
+
+// console.log(transitionPoint([0,0,0,0,0]));
+
+// Given an array Arr of N positive integers and another number X.
+// Determine whether or not there exist two elements in Arr whose sum is exactly X.
+function hasArrayTwoCandidates(arr, n, x) {
+  // 2 pointer approch
+  // let left = 0;
+  // let right = n - 1;
+  // arr.sort((a, b) => a - b);
+  // while (left < right) {
+  //   const sum = arr[left] + arr[right];
+  //   if (sum === x) {
+  //     return "Yes";
+  //   }
+  //   if (sum > x) {
+  //     right--;
+  //   }
+  //   if (sum < x) {
+  //     left++;
+  //   }
+  // }
+  // return "No";
+  // compliment approch
+  let st = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    if (st.has(arr[i])) {
+      return true;
+    }
+    st.set(Math.abs(arr[i] - x));
+  }
+  return false;
+}
+
+console.log(
+  hasArrayTwoCandidates(
+    [
+      335, 501, 170, 725, 479, 359, 963, 465, 706, 146, 282, 828, 962, 492, 996,
+      943, 828, 437, 392, 605, 903, 154, 293, 383, 422, 717, 719, 896, 448, 727,
+      772, 539, 870, 913, 668, 300, 36, 895, 704, 812, 323, 334,
+    ],
+    42,
+    468
+  )
+);
+
 console.log("run practice file");
