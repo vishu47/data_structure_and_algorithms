@@ -376,16 +376,132 @@ function hasArrayTwoCandidates(arr, n, x) {
   return false;
 }
 
-console.log(
-  hasArrayTwoCandidates(
-    [
-      335, 501, 170, 725, 479, 359, 963, 465, 706, 146, 282, 828, 962, 492, 996,
-      943, 828, 437, 392, 605, 903, 154, 293, 383, 422, 717, 719, 896, 448, 727,
-      772, 539, 870, 913, 668, 300, 36, 895, 704, 812, 323, 334,
-    ],
-    42,
-    468
-  )
-);
+// console.log(
+//   hasArrayTwoCandidates(
+//     [
+//       335, 501, 170, 725, 479, 359, 963, 465, 706, 146, 282, 828, 962, 492, 996,
+//       943, 828, 437, 392, 605, 903, 154, 293, 383, 422, 717, 719, 896, 448, 727,
+//       772, 539, 870, 913, 668, 300, 36, 895, 704, 812, 323, 334,
+//     ],
+//     42,
+//     468
+//   )
+// );
 
+// Given an array of N strings, find the longest common prefix among all strings present in the array.
+// N = 4
+// arr[] = {geeksforgeeks, geeks, geek,
+//          geezer}
+// Output: gee
+// Explanation: "gee" is the longest common
+// prefix in all the given strings.
+
+function longestCommonPrefix(arr, n) {
+  let comp = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    let j = 0;
+    while (arr[i][j] === comp[j] && j < comp.length && j < arr[i].length) {
+      j++;
+    }
+    comp = comp.substring(0, j);
+  }
+  return comp.length > 0 ? comp : -1;
+}
+
+// console.log(longestCommonPrefix(["hello", "world"], 2));
+
+// Given a sorted array arr[] of distinct integers. Sort the array into a wave-like array(In Place).
+// In other words, arrange the elements into a sequence such that arr[1] >= arr[2] <= arr[3] >= arr[4] <= arr[5].....
+
+// If there are multiple solutions, find the lexicographically smallest one.
+
+// Note:The given array is sorted in ascending order, and you don't need to return anything to
+// make changes in the original array itself.
+
+function convertToWave(arr, n) {
+  let start = 0;
+  let end = 1;
+  while (start < n - 1) {
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start += 2;
+    end += 2;
+  }
+  return arr;
+}
+
+// console.log(convertToWave([2, 4, 7, 8, 9, 10], 6));
+
+// Given an array arr[] of N positive integers which can contain integers from 1 to P where
+// elements can be repeated or can be absent from the array. Your task is to count the frequency
+// of all numbers from 1 to N. Make in-place changes in arr[], such that arr[i] = frequency(i).
+// Assume 1-based indexing.
+// Note: The elements greater than N in the array can be ignored for counting and do modify
+// the array in-place.
+
+function frequencyCount(arr, N, P) {
+  let mp = new Map();
+  let i = 0;
+  while (i < N) {
+    if (arr[i] <= P && mp.has(arr[i])) {
+      mp.set(arr[i], mp.get(arr[i]) + 1);
+    } else {
+      mp.set(arr[i], 1);
+    }
+    i++;
+  }
+  for (let i = 0; i < N; i++) {
+    if (mp.has(i + 1)) {
+      arr[i] = mp.get(i + 1);
+    } else {
+      arr[i] = 0;
+    }
+  }
+  return arr;
+}
+
+// console.log(frequencyCount([3, 3, 3, 3], 4, 3));
+
+// You are given an array a, of n elements. Find the minimum index based
+// distance between two distinct elements
+// of the array, x and y. Return -1, if either x or y does not exist in the array.
+
+function minDist(a, n, x, y) {
+  // let d = 0;
+  // let flag = false;
+  // for (let i = 0; i < n; i++) {
+  //   if (a[i] === x) {
+  //     flag = true;
+  //   }
+  //   if (flag && a[i] !== y) {
+  //     d++;
+  //   } else if (a[i] === y) {
+  //     return [d];
+  //     //   break;
+  //   }
+  // }
+  // return -1;
+
+  let minDistance = Number.MAX_SAFE_INTEGER;
+    let lastIndexX = -1;
+    let lastIndexY = -1;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === x) {
+            lastIndexX = i;
+            if (lastIndexY !== -1) {
+                minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
+            }
+        } else if (arr[i] === y) {
+            lastIndexY = i;
+            if (lastIndexX !== -1) {
+                minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
+            }
+        }
+    }
+
+    return minDistance === Number.MAX_SAFE_INTEGER ? -1 : minDistance;
+}
+console.log(minDist([1, 2, 3, 2], 4, 1, 2));
 console.log("run practice file");
