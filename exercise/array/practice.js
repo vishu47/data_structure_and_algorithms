@@ -468,40 +468,91 @@ function frequencyCount(arr, N, P) {
 // of the array, x and y. Return -1, if either x or y does not exist in the array.
 
 function minDist(a, n, x, y) {
-  // let d = 0;
-  // let flag = false;
+  // return  d===0 ? -1 : d;
+  // let minDistance = Number.MAX_SAFE_INTEGER;
+  //   let lastIndexX = -1;
+  //   let lastIndexY = -1;
+  //   for (let i = 0; i < arr.length; i++) {
+  //       if (arr[i] === x) {
+  //           lastIndexX = i;
+  //           if (lastIndexY !== -1) {
+  //               minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
+  //           }
+  //       } else if (arr[i] === y) {
+  //           lastIndexY = i;
+  //           if (lastIndexX !== -1) {
+  //               minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
+  //           }
+  //       }
+  //   }
+  //   return minDistance === Number.MAX_SAFE_INTEGER ? -1 : minDistance;
+  // let finalDist = Number.MAX_SAFE_INTEGER;
+  // let ix = -1;
+  // let iy = -1;
   // for (let i = 0; i < n; i++) {
   //   if (a[i] === x) {
-  //     flag = true;
-  //   }
-  //   if (flag && a[i] !== y) {
-  //     d++;
+  //     ix = i;
+  //     console.log(finalDist, Math.abs(ix - iy), "if");
+  //     if (iy !== -1) {
+  //       finalDist = Math.min(finalDist, Math.abs(ix - iy));
+  //       console.log(finalDist, Math.abs(ix - iy), "if");
+  //     }
   //   } else if (a[i] === y) {
-  //     return [d];
-  //     //   break;
+  //     iy = i;
+  //     if (ix !== -1) {
+  //       console.log(finalDist, Math.abs(ix - iy), "else");
+  //       finalDist = Math.min(finalDist, Math.abs(ix - iy));
+  //     }
   //   }
   // }
-  // return -1;
-
-  let minDistance = Number.MAX_SAFE_INTEGER;
-    let lastIndexX = -1;
-    let lastIndexY = -1;
-
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === x) {
-            lastIndexX = i;
-            if (lastIndexY !== -1) {
-                minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
-            }
-        } else if (arr[i] === y) {
-            lastIndexY = i;
-            if (lastIndexX !== -1) {
-                minDistance = Math.min(minDistance, Math.abs(lastIndexX - lastIndexY));
-            }
-        }
+  // return finalDist === -1 ? -1 : finalDist;
+  let dist = a.length;
+  let lastindex = -1;
+  for (let i = 0; i < n; i++) {
+    if (a[i] === x || a[i] === y) {
+      if (lastindex !== -1 && a[i] !== a[lastindex]) {
+        dist = Math.min(dist, i - lastindex);
+      }
+      lastindex = i;
     }
-
-    return minDistance === Number.MAX_SAFE_INTEGER ? -1 : minDistance;
+  }
+  return dist === a.length ? -1 : dist;
 }
-console.log(minDist([1, 2, 3, 2], 4, 1, 2));
+// https://chat.openai.com/c/97a0089f-a20e-41c8-ae36-c59cf1f7d243
+// console.log(minDist([1, 2, 3, 2], 4, 1, 2));
+
+// Given a sorted array a[] of size n, delete all the duplicated elements from a[] &
+// modify the array such that only distinct elements should be present there.
+
+// Note:
+// 1. Don't use set or HashMap to solve the problem.
+// 2. You must return the modified array size where only distinct elements are present
+// in the array, the driver code will print all the elements of the modified array.
+
+function remove_duplicate(arr, n) {
+  //code here
+  let lastIndex = 0;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== arr[lastIndex]) {
+      lastIndex++;
+      arr[lastIndex] = arr[i];
+    }
+  }
+  console.log(arr)
+  return lastIndex + 1;
+}
+
+console.log(
+  remove_duplicate(
+    [
+      1, 3, 4, 5, 6, 12, 13, 17, 19, 22, 23, 25, 27, 28, 28, 35, 36, 37, 39, 43,
+      46, 48, 54, 59, 62, 63, 65, 68, 68, 70, 70, 72, 79, 82, 83, 92, 92, 93,
+      95, 96, 96,
+    ],
+    14
+  ),
+  "ll"
+);
+
 console.log("run practice file");
