@@ -534,25 +534,92 @@ function remove_duplicate(arr, n) {
   let lastIndex = 0;
 
   for (let i = 1; i < arr.length; i++) {
+    console.log(lastIndex, "last");
     if (arr[i] !== arr[lastIndex]) {
       lastIndex++;
       arr[lastIndex] = arr[i];
+      console.log(arr, lastIndex, arr[lastIndex], arr[i], "iside");
     }
+    console.log(arr);
   }
-  console.log(arr)
   return lastIndex + 1;
 }
+// console.log(remove_duplicate([1, 3, 12, 5, 6, 12, 13], 14), "ll");
 
-console.log(
-  remove_duplicate(
-    [
-      1, 3, 4, 5, 6, 12, 13, 17, 19, 22, 23, 25, 27, 28, 28, 35, 36, 37, 39, 43,
-      46, 48, 54, 59, 62, 63, 65, 68, 68, 70, 70, 72, 79, 82, 83, 92, 92, 93,
-      95, 96, 96,
-    ],
-    14
-  ),
-  "ll"
-);
+// Given an array A of N integers. Your task is to write a program to find the
+// maximum value of ∑arr[i]*i, where i = 0, 1, 2,., n 1.
+// You are allowed to rearrange the elements of the array.
+// Note: Since output could be large, hence module 109+7 and then print answer.
+// Input : Arr[] = {5, 3, 2, 4, 1}
+// Output : 40
+// Explanation:
+// If we arrange the array as 1 2 3 4 5 then
+// we can see that the minimum index will multiply
+// with minimum number and maximum index will
+// multiply with maximum number.
+// So 1*0+2*1+3*2+4*3+5*4=0+2+6+12+20 = 40 mod(109+7) = 40
 
+function Maximize(arr, n) {
+  let sum = 0;
+  arr.sort((a, b) => a - b);
+  //  tle
+  // for (let i = 0; i < n; i++) {
+  //   sum = sum + arr[i] * (arr[i] - 1);
+  // }
+
+  // reduce method
+  const ssum = arr.reduce((sum, current, index) => sum + current * index, 0);
+  return ssum % 1000000007;
+}
+
+// console.log(Maximize([5, 3, 2, 4, 1], 5));
+
+// Given an array nums[] of size n, construct a Product Array P (of same size n) such that P[i] is equal
+// to the product of all the elements of nums except nums[i].
+// Input:
+// n = 5
+// nums[] = {10, 3, 5, 6, 2}
+// Output:
+// 180 600 360 300 900
+// Explanation:
+// For i=0, P[i] = 3*5*6*2 = 180.
+// For i=1, P[i] = 10*5*6*2 = 600.
+// For i=2, P[i] = 10*3*6*2 = 360.
+// For i=3, P[i] = 10*3*5*2 = 300.
+// For i=4, P[i] = 10*3*5*6 = 900.
+
+function productExceptSelf(nums, n) {
+  //  tle
+  // let pr = [];
+  // let sum = 1;
+  // for (let i = 0; i < n; i++) {
+  //   for (let j = 0; j < n; j++) {
+  //     if (i !== j) {
+  //       sum = sum * nums[j];
+  //     }
+  //   }
+  //   pr.push(sum);
+  //   sum = 1;
+  // }
+  // return pr;
+
+  let pre = new Array(n).fill(1);
+  let post = new Array(n).fill(1);
+  let final = new Array(n).fill(1);
+  let preMulti = 1;
+  for (let i = 1; i < n; i++) {
+    pre[i] = nums[i - 1] * pre[i - 1];
+  }
+  let postMulti = 0;
+  for (let j = n - 2; j >= 0; j--) {
+    post[j] = nums[j + 1] * post[j + 1];
+  }
+  console.log(pre, post);
+  for (let k = 0; k < n; k++) {
+    final[k] = pre[k] * post[k];
+  }
+  return final;
+}
+
+console.log(productExceptSelf([10, 3, 5, 6, 2], 5));
 console.log("run practice file");
