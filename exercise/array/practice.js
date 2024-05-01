@@ -588,6 +588,7 @@ function Maximize(arr, n) {
 // For i=3, P[i] = 10*3*5*2 = 300.
 // For i=4, P[i] = 10*3*5*6 = 900.
 
+// https://www.youtube.com/watch?v=G9zKmhybKBM
 function productExceptSelf(nums, n) {
   //  tle
   // let pr = [];
@@ -606,20 +607,63 @@ function productExceptSelf(nums, n) {
   let pre = new Array(n).fill(1);
   let post = new Array(n).fill(1);
   let final = new Array(n).fill(1);
-  let preMulti = 1;
   for (let i = 1; i < n; i++) {
     pre[i] = nums[i - 1] * pre[i - 1];
   }
-  let postMulti = 0;
   for (let j = n - 2; j >= 0; j--) {
     post[j] = nums[j + 1] * post[j + 1];
   }
-  console.log(pre, post);
+  // console.log(pre, post);
   for (let k = 0; k < n; k++) {
     final[k] = pre[k] * post[k];
   }
   return final;
 }
 
-console.log(productExceptSelf([10, 3, 5, 6, 2], 5));
+// console.log(productExceptSelf([10, 3, 5, 6, 2], 5));
+
+// Given an array of n integers. Find the first element that occurs atleast k number of times.
+// If no such element exists in the array, then expect the answer to be -1.
+// Input :
+// n = 7, k = 2
+// a[] = {1, 7, 4, 3, 4, 8, 7}
+// Output :
+// 4
+// Explanation :
+// Both 7 and 4 occur 2 times. But 4 is first that occurs twice.
+// As at index = 4, 4 has occurred twice whereas 7 appeared twice
+// at index 6.
+
+function firstElementKTime(n, k, arr) {
+  let mp = new Map();
+  for (let i = 0; i < n; i++) {
+    if (mp.has(arr[i])) {
+      let fre = mp.get(arr[i]) + 1;
+      mp.set(arr[i], fre);
+      if (fre === k) return arr[i];
+    } else {
+      mp.set(arr[i], 1);
+    }
+  }
+  return -1;
+}
+
+// console.log(firstElementKTime(10, 4, [3, 1, 3, 4, 5, 1, 3, 3, 5, 4]), "ans");
+
+// Given an array arr[] of size N, check if it is sorted in non-decreasing order or not.
+
+function arraySortedOrNot(arr, n) {
+  for (let i = 1; i < n - 1; i++) {
+    if (arr[i] >= arr[i - 1] && arr[i] <= arr[i + 1]) {
+      continue;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(
+  arraySortedOrNot([1, 2, 3, 5, 5, 7, 7, 7, 8, 12, 13, 15, 15, 15, 19], 15)
+);
 console.log("run practice file");
