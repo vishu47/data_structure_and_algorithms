@@ -663,7 +663,75 @@ function arraySortedOrNot(arr, n) {
   return true;
 }
 
-console.log(
-  arraySortedOrNot([1, 2, 3, 5, 5, 7, 7, 7, 8, 12, 13, 15, 15, 15, 19], 15)
-);
+// console.log(
+//   arraySortedOrNot([1, 2, 3, 5, 5, 7, 7, 7, 8, 12, 13, 15, 15, 15, 19], 15)
+// );
+
+// Given two arrays a[] and b[] respectively of size n and m, the task is to print the count of
+// elements in the intersection (or common elements) of the two arrays.
+// For this question, the intersection of two arrays can be defined as the set
+// containing distinct common elements between the two arrays.
+
+function NumberofElementsInIntersection(a, b, n, m) {
+  let st = new Set(a);
+  let count = 0;
+  for (let i = 0; i < m; i++) {
+    if (st.has(b[i])) {
+      count++;
+      // for preventing the duplicasy
+      st.delete(b[i]);
+    }
+  }
+  return count;
+}
+// https://www.youtube.com/watch?v=zgLtdM8-6CE
+// console.log(
+//   NumberofElementsInIntersection([1, 2, 3, 4, 5, 6], [3, 4, 5, 6, 7, 3], 6, 6)
+// );
+
+// Given an array arr[] of n positive integers. Push all the zeros of the given array
+// to the right end of the array while maintaining
+// the order of non-zero elements. Do the mentioned change in the array in-place.
+
+function pushZerosToEnd(arr, n) {
+  //code here
+  // thsi solution will not persist the position of the element(2 pointer approch)
+  // let lt = 0;
+  // let rt = n - 1;
+  // while (lt < rt) {
+  //   console.log(lt, rt);
+  //   if (arr[lt] === 0 && arr[rt] !== 0) {
+  //     let temp = arr[lt];
+  //     arr[lt] = arr[rt];
+  //     arr[rt] = temp;
+  //     rt--;
+  //     lt++;
+  //   }
+  //   if (arr[lt] !== 0) {
+  //     lt++;
+  //   }
+  //   if (arr[lt] === 0 && arr[rt] === 0) {
+  //     break;
+  //   }
+  // }
+  // return arr;
+
+  let nz = 0; //non zero
+  let z = 0; // zero
+  while (nz < n) {
+    console.log(arr[nz]);
+    if (arr[nz] !== 0) {
+      let temp = arr[nz];
+      arr[nz] = arr[z];
+      arr[z] = temp;
+      nz++;
+      z++;
+    } else {
+      nz++;
+    }
+  }
+  return nz;
+}
+
+console.log(pushZerosToEnd([0, 5, 3, 0, 4], 5));
 console.log("run practice file");
