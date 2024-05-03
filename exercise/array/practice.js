@@ -733,5 +733,38 @@ function pushZerosToEnd(arr, n) {
   return nz;
 }
 
-console.log(pushZerosToEnd([0, 5, 3, 0, 4], 5));
+// console.log(pushZerosToEnd([0, 5, 3, 0, 4], 5));
+
+// Given an unsorted array Arr of N positive and negative numbers. Your task is to create
+// an array of alternate positive and negative numbers without changing the relative order
+// of positive and negative numbers.
+// Note: Array should start with a positive number and 0 (zero) should be considered a positive element.
+
+function rearrange(arr, n) {
+  let pos = [];
+  let neg = [];
+  let final = [];
+  for (let i = 0; i < n; i++) {
+    if (arr[i] < 0) {
+      neg.push(arr[i]);
+    } else {
+      pos.push(arr[i]);
+    }
+  }
+  let p = 0;
+  let ne = 0;
+  for (let j = 0; j < Math.max(neg.length, pos.length); j++) {
+    if (j < pos.length) {
+      final.push(pos[ne]);
+      ne++;
+    }
+    if (j < neg.length) {
+      final.push(neg[p]);
+      p++;
+    }
+  }
+  return final;
+}
+console.log(rearrange([9, 4, -2, -1, 5, 0, -5, -3, 2], 9));
+
 console.log("run practice file");
