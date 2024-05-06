@@ -765,6 +765,27 @@ function rearrange(arr, n) {
   }
   return final;
 }
-console.log(rearrange([9, 4, -2, -1, 5, 0, -5, -3, 2], 9));
+// console.log(rearrange([9, 4, -2, -1, 5, 0, -5, -3, 2], 9));
 
+// Given an ascending sorted rotated array arr of distinct integers of size n.
+//  The array is right-rotated k times. Find the value of k.
+
+function findKRotation(arr, n) {
+  // code here
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] > arr[right]) {
+      left = mid + 1;
+    } else {
+      right = mid;
+    }
+  }
+  return left;
+}
+
+console.log(findKRotation([5, 1, 2, 3, 4], 5));
 console.log("run practice file");
