@@ -771,21 +771,81 @@ function rearrange(arr, n) {
 //  The array is right-rotated k times. Find the value of k.
 
 function findKRotation(arr, n) {
-  // code here
+  // binary search loop
   let left = 0;
-  let right = arr.length - 1;
+  let right = n - 1;
+  // while (left < right) {
+  //   const mid = Math.floor((left + right) / 2);
+  //   if (array[mid] > array[right]) {
+  //     left = mid + 1;
+  //   } else {
+  //     right = mid;
+  //   }
+  // }
+  // return left
 
   while (left < right) {
-    let mid = Math.floor((left + right) / 2);
-
-    if (arr[mid] > arr[right]) {
-      left = mid + 1;
+    if (arr[left] > arr[right]) {
+      left++;
     } else {
-      right = mid;
+      right--;
     }
   }
   return left;
 }
 
-console.log(findKRotation([5, 1, 2, 3, 4], 5));
+// console.log(findKRotation([1, 2, 3, 4, 5], 5));
+
+// Given an array of size n and a range [a, b]. The task is to partition the array around the range such that the array is divided into three parts.
+// 1) All elements smaller than a come first.
+// 2) All elements in range a to b come next.
+// 3) All elements greater than b appear in the end.
+// The individual elements of three sets can appear in any order. You are required to return the modified array.
+
+// Note: The generated output is 1 if you modify the given array successfully.
+
+// Geeky Challenge: Solve this problem in O(n) time complexity.
+
+function threewaypartition(array, a, b) {
+  // let low = 0;
+  // let mid = 0;
+  // let high = array.length - 1;
+  // while (mid <= high) {
+  //   if (array[mid] < a) {
+  //     // Swap arr[mid] with arr[low]
+  //     [array[mid], array[low]] = [array[low], array[mid]];
+  //     low++;
+  //     mid++;
+  //   } else if (array[mid] >= a && array[mid] <= b) {
+  //     // Element in range [a, b], move mid pointer
+  //     mid++;
+  //   } else {
+  //     // Swap arr[mid] with arr[high]
+  //     [array[mid], array[high]] = [array[high], array[mid]];
+  //     high--;
+  //   }
+  // }
+  // // Return 1 to indicate successful modification
+  // return 1;
+
+  let l = 0;
+  let r = array.length - 1;
+
+  for (let i = 0; i <= r; i++) {
+    if (array[i] < a) {
+      [array[i], array[l]] = [array[l], array[i]];
+      l++;
+    }
+    if (array[i] > b) {
+      [array[i], array[r]] = [array[r], array[i]];
+      r--;
+      i--;
+    }
+  }
+}
+
+console.log(
+  threewaypartition([10, 7, 6, 1, 4, 10, 5, 2, 7, 5, 3, 3, 8, 3, 8], 5, 5)
+);
+
 console.log("run practice file");
