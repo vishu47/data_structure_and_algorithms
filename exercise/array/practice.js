@@ -844,8 +844,38 @@ function threewaypartition(array, a, b) {
   }
 }
 
-console.log(
-  threewaypartition([10, 7, 6, 1, 4, 10, 5, 2, 7, 5, 3, 3, 8, 3, 8], 5, 5)
-);
+// console.log(
+//   threewaypartition([10, 7, 6, 1, 4, 10, 5, 2, 7, 5, 3, 3, 8, 3, 8], 5, 5)
+// );
+
+// Given two unsorted arrays A of size N and B of size M of distinct elements,
+// the task is to find all pairs from both arrays whose sum is equal to X.
+
+// Note: All pairs should be printed in increasing order of u. For eg. for two pairs
+// (u1,v1) and (u2,v2), if u1 < u2 then
+// (u1,v1) should be printed first else second.
+
+function allPairs(A, B, N, M, X) {
+  const pairs = [];
+  // A.sort();
+  // for (let i = 0; i < N; i++) {
+  //   for (let j = 0; j < M; j++) {
+  //     if (A[i] + B[j] === X) {
+  //       pairs.push([A[i], B[j]]);
+  //     }
+  //   }
+  // }
+  // return pairs;
+  const st = new Set(B);
+  A.sort((a, b) => a - b);
+  for (let i = 0; i < N; i++) {
+    if (st.has(X - A[i])) {
+      pairs.push([A[i], X - A[i]]);
+    }
+  }
+  return pairs;
+}
+
+console.log(allPairs([1, 2, 4, 5, 7], [5, 6, 3, 4, 8], 5, 5, 9));
 
 console.log("run practice file");
