@@ -876,6 +876,73 @@ function allPairs(A, B, N, M, X) {
   return pairs;
 }
 
-console.log(allPairs([1, 2, 4, 5, 7], [5, 6, 3, 4, 8], 5, 5, 9));
+// console.log(allPairs([1, 2, 4, 5, 7], [5, 6, 3, 4, 8], 5, 5, 9));
+
+// Given an unsorted array of size N. Find the first element in array such that all of
+//  its left elements are smaller and all right elements to it are greater than it.
+
+// Note: Left and right side elements can be equal to required element.
+//  And extreme elements cannot be required element.
+
+function check(arr, n, ind) {
+  i = ind - 1;
+  j = ind + 1;
+
+  while (i >= 0) {
+    console.log(arr[i], "whilei");
+    if (arr[i] > arr[ind]) {
+      return false;
+    }
+    i--;
+  }
+  while (j < n) {
+    console.log(arr[j], "whilej");
+    if (arr[j] < arr[ind]) {
+      return false;
+    }
+    j++;
+  }
+  return true;
+}
+
+function findElement(arr, n) {
+  // for (let i = 1; i < n - 1; i++) {
+  //   console.log(check(arr, n, i), "arr, n, i");
+  //   if (check(arr, n, i)) {
+  //     return arr[i];
+  //   }
+  // }
+  // return -1;
+
+  const left = [];
+  const right = [];
+  for (let i = 1; i < n; i++) {
+    // /  let max
+    left[i] = Math.max(left[i], left[i - 1]);
+  }
+  // /  right min
+  for (let j = n - 2; j > 0; j--) {
+    right[j] = Math.min(right[j + 1], right[j]);
+  }
+
+  console.log(left, right);
+
+  for (let k = 0; k < n; k++) {
+    // console.log(arr[k]);
+    if (arr[k] >= left[k] && arr[k] <= right[k]) {
+      console.log(arr[k]);
+    }
+  }
+}
+
+// console.log(findElement([4, 2, 5, 7], 4));
+
+// Given an array of integers (A[])  and a number x, find the
+//  smallest subarray with sum greater than the given value.
+//  If such a subarray do not exist return 0 in that case.
+
+function smallestSubWithSum(a, n, x) {}
+
+console.log(smallestSubWithSum[(1, 4, 45, 6, 0, 19)], 6);
 
 console.log("run practice file");
