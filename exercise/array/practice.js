@@ -941,7 +941,9 @@ function findElement(arr, n) {
 //  smallest subarray with sum greater than the given value.
 //  If such a subarray do not exist return 0 in that case.
 
-function smallestSubWithSum(a, n, x) {}
+function smallestSubWithSum(a, n, x) {
+  
+}
 
 console.log(smallestSubWithSum[(1, 4, 45, 6, 0, 19)], 6);
 
