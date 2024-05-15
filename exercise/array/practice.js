@@ -942,9 +942,86 @@ function findElement(arr, n) {
 //  If such a subarray do not exist return 0 in that case.
 
 function smallestSubWithSum(a, n, x) {
-  
+  // broot force
+  // let sum = a[0];
+  // let ln = Number.MAX_SAFE_INTEGER;
+  // for (let i = 0; i < n; i++) {
+  //   sum = a[i];
+  //   for (let j = i + 1; j < n; j++) {
+  //     sum += a[j];
+  //     if (sum > x) {
+  //       console.log(sum, i, j, a[j]);
+  //       ln = Math.min(ln, j - i + 1);
+  //       break;
+  //     }
+  //   }
+  // }
+  // return ln === Number.MAX_SAFE_INTEGER ? 0 : ln;
+
+  // sliding window approch
+
+  let ws = 0;
+  let i = 0;
+  let ln = Number.MAX_SAFE_INTEGER;
+  let sum = 0;
+
+  while (i < n) {
+    sum += a[i];
+    if (sum > x) {
+      ln = Math.min(ln, i - ws + 1);
+      while (ws < i && sum > x) {
+        sum -= a[ws];
+        ws++;
+        if (sum > x) {
+          ln = Math.min(ln, i - ws + 1);
+        }
+      }
+    }
+    i++;
+  }
+  return ln === Number.MAX_SAFE_INTEGER ? 0 : ln;
 }
 
-console.log(smallestSubWithSum[(1, 4, 45, 6, 0, 19)], 6);
+// console.log(smallestSubWithSum([1, 10, 5, 2, 7], 5, 9));
+
+// Given an array arr of distinct elements of size n, the task is to rearrange the elements of the array in a zig-zag fashion so that the converted array should be in the below form:
+// arr[0] < arr[1]  > arr[2] < arr[3] > arr[4] < . . . . arr[n-2] < arr[n-1] > arr[n].
+// NOTE: If your transformation is correct, the output will be 1 else the output will be 0.
+
+function zigZag(n, arr) {
+  for (let i = 0; i < n - 1; i++) {
+    if (i % 2 === 0 && arr[i] > arr[i + 1]) {
+      let temp = arr[i];
+      arr[i] = arr[i + 1];
+      arr[i + 1] = temp;
+    } else if (i % 2 === 0 && arr[i] < arr[i + 1]) {
+      let temp = arr[i];
+      arr[i] = arr[i + 1];
+      arr[i + 1] = temp;
+    }
+  }
+  return arr;
+}
+
+// console.log(zigZag(7, [4, 3, 7, 8, 6, 2, 1]));
+
+// Given an unsorted array arr[] of size n having both negative and positive integers.
+// The task is place all negative element at the end of array without changing the order
+// of positive element and negative element.
+
+function segregateElements(arr, n) {
+  const a = [];
+  const b = [];
+  for (let i = 0; i < n; i++) {
+    if (arr[i] < 0) {
+      a.push(arr[i]);
+    } else {
+      b.push(arr[i]);
+    }
+  }
+  return [...b, ...a];
+}
+
+console.log(segregateElements([1, -1, 3, 2, -7, -5, 11, 6], 8));
 
 console.log("run practice file");
