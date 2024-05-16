@@ -1010,16 +1010,67 @@ function zigZag(n, arr) {
 // of positive element and negative element.
 
 function segregateElements(arr, n) {
-  const a = [];
-  const b = [];
-  for (let i = 0; i < n; i++) {
-    if (arr[i] < 0) {
-      a.push(arr[i]);
-    } else {
-      b.push(arr[i]);
+  // const a = [];
+  // const b = [];
+  // for (let i = 0; i < n; i++) {
+  //   if (arr[i] < 0) {
+  //     a.push(arr[i]);
+  //   } else {
+  //     b.push(arr[i]);
+  //   }
+  // }
+  // return [...b, ...a];
+
+  // const b = [];
+  // let k = 0;
+  // for (let i = 0; i < n; i++) {
+  //   if (arr[i] >= 0) {
+  //     b[k] = arr[i];
+  //     k++;
+  //   }
+  // }
+  // for (let i = 0; i < n; i++) {
+  //   if (arr[i] < 0) {
+  //     b[k] = arr[i];
+  //     k++;
+  //   }
+  // }
+  // return b
+
+  // let tr = n - 1;
+  // for (let i = n - 1; i >= 0; i--) {
+  //   if (arr[i] < 0) {
+  //     const rp = arr[i];
+
+  //     for (let j = i; j < tr; j++) {
+  //       arr[j] = arr[j + 1];
+  //     }
+  //     arr[tr] = rp;
+
+  //     tr--;
+  //   }
+  // }
+
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    // Move left pointer until finding a negative element
+    while (arr[left] >= 0 && left <= right) {
+      left++;
+    }
+    // Move right pointer until finding a positive element
+    while (arr[right] < 0 && left <= right) {
+      right--;
+    }
+    // Swap if left pointer is less than or equal to right pointer
+    if (left <= right) {
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      left++;
+      right--;
     }
   }
-  return [...b, ...a];
+  console.log(arr);
 }
 
 console.log(segregateElements([1, -1, 3, 2, -7, -5, 11, 6], 8));
