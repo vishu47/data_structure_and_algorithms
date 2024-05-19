@@ -1051,28 +1051,69 @@ function segregateElements(arr, n) {
   //   }
   // }
 
-  let left = 0;
-  let right = arr.length - 1;
-
-  while (left <= right) {
-    // Move left pointer until finding a negative element
-    while (arr[left] >= 0 && left <= right) {
-      left++;
-    }
-    // Move right pointer until finding a positive element
-    while (arr[right] < 0 && left <= right) {
-      right--;
-    }
-    // Swap if left pointer is less than or equal to right pointer
-    if (left <= right) {
-      [arr[left], arr[right]] = [arr[right], arr[left]];
-      left++;
-      right--;
+  // stack solution
+  const a = [];
+  const b = [];
+  for (let i = 0; i < n; i++) {
+    if (arr[i] < 0) {
+      a.push(arr[i]);
+    } else {
+      b.push(arr[i]);
     }
   }
-  console.log(arr);
+
+  let i = n - 1;
+
+  while (a.length > 0) {
+    arr[i] = a.pop();
+    i--;
+  }
+  while (b.length > 0) {
+    arr[i] = b.pop();
+    i--;
+  }
+
+  return arr;
 }
 
-console.log(segregateElements([1, -1, 3, 2, -7, -5, 11, 6], 8));
+// console.log(segregateElements([1, -1, 3, 2, -7, -5, 11, 6], 8));
+
+//
+
+// Given two sorted arrays of distinct elements. There is only 1 difference between the arrays.
+// The first array has one element extra added in between. Find the index of the extra element.
+
+function findExtra(a, b, n) {
+  let on = 0;
+  let tw = 0;
+
+  while (on < n || tw < n) {
+    if (a[on] !== b[tw] && (a[on] !== undefined || b[on] !== undefined)) {
+      console.log(a[on]);
+      return on ? on : tw;
+    }
+    on++;
+    tw++;
+  }
+}
+
+// console.log(findExtra([3, 5, 7, 9, 11, 13], [3, 5, 7, 11, 13], 6));
+
+// Given an array Arr of size N consisting of only 0's and 1's. The array is
+// sorted in such a manner that all the 1's are placed first and then they are
+// followed by all the 0's. Find the count of all the 0's.
+
+function countZeroes(arr, n) {
+  // write your code here
+  let sum = 0;
+  for (let i = n; i >= 0; i--) {
+    if (arr[i] === 0) {
+      sum++;
+    }
+  }
+  return sum;
+}
+
+console.log(countZeroes([0, 0, 0, 0, 0], 5));
 
 console.log("run practice file");
