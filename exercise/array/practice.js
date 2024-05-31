@@ -1114,6 +1114,67 @@ function countZeroes(arr, n) {
   return sum;
 }
 
-console.log(countZeroes([0, 0, 0, 0, 0], 5));
+// console.log(countZeroes([0, 0, 0, 0, 0], 5));
+
+// Given an array arr of size N and an element k. The task is to find the
+// count of elements in the array that appear more than n/k times.
+
+function countOccurence(arr, n, k) {
+  const c = n / k;
+  const mp = new Map();
+  let f = 0;
+  for (let i = 0; i < n; i++) {
+    if (mp.has(arr[i])) {
+      mp.set(arr[i], mp.get(arr[i]) + 1);
+    } else {
+      mp.set(arr[i], 1);
+    }
+  }
+
+  for (let [key, value] of mp) {
+    if (value > c) {
+      f++;
+    }
+  }
+  return f;
+
+  // BR approch
+  // const occ = [];
+
+  // for (let i = 0; i < n; i++) {
+  //   let cn = 0;
+  //   for (let j = 0; j < n; j++) {
+  //     if (arr[i] === arr[j]) {
+  //       cn++;
+  //     }
+  //     if (cn > c && !occ.includes(arr[i])) {
+  //       occ.push(arr[i]);
+  //     }
+  //   }
+  // }
+  // return occ.length;
+}
+
+// console.log(countOccurence([2, 3, 3, 2], 4, 3));
+
+// Given a string str which may contain lowercase and uppercase characters. The task
+// is to remove all duplicate characters from the string and find the resultant string.
+// The order of remaining characters in the output should be same as in the original string.
+
+function removeDuplicates(str) {
+  //code here
+  const mp = new Set();
+  let fl = "";
+  for (let i = 0; i < str.length; i++) {
+    console.log(str[i]);
+    mp.add(str[i]);
+  }
+  mp.forEach((el) => {
+    fl += el;
+  });
+  return fl;
+}
+
+console.log(removeDuplicates("geEksforGEeks"));
 
 console.log("run practice file");
