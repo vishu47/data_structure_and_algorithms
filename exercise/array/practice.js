@@ -1175,6 +1175,26 @@ function removeDuplicates(str) {
   return fl;
 }
 
-console.log(removeDuplicates("geEksforGEeks"));
+// console.log(removeDuplicates("geEksforGEeks"));
+
+// Given two integer arrays a of size n and b of size m, the task is to find the
+// numbers which are present in the first array a, but not present in the second array
+// b.
+//
+// Note: Numbers to be returned should in order as they appear in array a.
+
+function findMissing(a, b, n, m) {
+  let fl = [];
+  let flag = false;
+  let st = new Set(b);
+  for (let i = 0; i < n; i++) {
+    if (!st.has(a[i])) {
+      fl.push(a[i]);
+    }
+  }
+  return fl;
+}
+
+console.log(findMissing([1, 2, 3, 4, 5, 10], [2, 3, 1, 0, 5], 6, 5));
 
 console.log("run practice file");
