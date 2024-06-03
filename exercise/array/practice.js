@@ -1195,6 +1195,23 @@ function findMissing(a, b, n, m) {
   return fl;
 }
 
-console.log(findMissing([1, 2, 3, 4, 5, 10], [2, 3, 1, 0, 5], 6, 5));
+// console.log(findMissing([1, 2, 3, 4, 5, 10], [2, 3, 1, 0, 5], 6, 5));
 
+// You are given two arrays, A and B, of equal size N. The task is to find the minimum
+// value of A[0] * B[0] + A[1] * B[1] + .... + A[N-1] * B[N-1], where shuffling of elements of arrays A and B is allowed.
+//
+
+function minValue(arr, brr, n) {
+  //code here
+  const nw = brr.sort((a, b) => b - a);
+  const a = arr.sort((a, b) => a - b);
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    sum = sum + a[i] * nw[i];
+  }
+
+  return sum;
+}
+
+console.log(minValue([3, 1, 1], [6, 5, 4], 3));
 console.log("run practice file");
