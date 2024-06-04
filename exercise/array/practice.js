@@ -1213,5 +1213,49 @@ function minValue(arr, brr, n) {
   return sum;
 }
 
-console.log(minValue([3, 1, 1], [6, 5, 4], 3));
+// console.log(minValue([3, 1, 1], [6, 5, 4], 3));
+
+// Given an array arr of n positive integers. The task is to swap every ith element
+// of the array with (i+2)th element.
+function swapElements(n, arr) {
+  for (let i = 0; i < n - 2; i++) {
+    let temp = arr[i];
+    arr[i] = arr[i + 2];
+    arr[i + 2] = temp;
+  }
+  return arr;
+}
+
+// console.log(swapElements(5, [1,2,3,4,5]));
+
+// Given an array of length n consisting of only 0's and 1's in random order. Modify the array in-place to segregate 0s on the
+// left side and 1s on the right side of the array.
+
+function segregate0and1(arr, n) {
+  let zr = 0
+  let on = n-1
+  while(zr <= on){
+    console.log(arr[zr] , arr[on])
+    if(arr[on] === 0){
+      on = on
+      zr++
+    }
+    if(arr[zr] === 1){
+      zr = zr
+      on--
+    }
+
+    if(arr[zr] === 1 && arr[on] === 0){
+      let temp = arr[zr]
+      arr[zr] = arr[on]
+      arr[zr] = temp
+      zr++
+      on--
+    }
+  }
+  console.log(arr)
+}
+
+console.log(segregate0and1([0, 0, 1, 1, 0],5))
+
 console.log("run practice file");
