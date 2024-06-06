@@ -1232,30 +1232,111 @@ function swapElements(n, arr) {
 // left side and 1s on the right side of the array.
 
 function segregate0and1(arr, n) {
-  let zr = 0
-  let on = n-1
-  while(zr <= on){
-    console.log(arr[zr] , arr[on])
-    if(arr[on] === 0){
-      on = on
-      zr++
-    }
-    if(arr[zr] === 1){
-      zr = zr
-      on--
-    }
-
-    if(arr[zr] === 1 && arr[on] === 0){
-      let temp = arr[zr]
-      arr[zr] = arr[on]
-      arr[zr] = temp
-      zr++
-      on--
+  let left = 0;
+  let right = n - 1;
+  while (left < right) {
+    console.log(left, right, arr);
+    if (arr[left] === 1) {
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      right--;
+    } else {
+      left++;
     }
   }
-  console.log(arr)
+  console.log(arr);
 }
 
-console.log(segregate0and1([0, 0, 1, 1, 0],5))
+// console.log(segregate0and1([0, 0, 1, 1, 0, 1], 6));
+
+// You will be given an array arr of integers of length N. You can construct
+// an integer from two integers by treating the integers as strings, and
+// then concatenating them. For example, 19 and 4 can be used to construct
+// 194 and 419.
+
+// The task is to find whether it’s possible to construct an integer using
+// all the digits of these numbers such that it would be divisible by 3.
+// If it is possible then print 1 and if not print 0.
+
+function isPossible(N, arr) {
+  let str = "";
+  let count = 0;
+  for (let i = 0; i < N; i++) {
+    str += arr[i];
+  }
+  for (let i = 0; i < str.length; i++) {
+    count += parseInt(str[i]);
+  }
+  return count % 3 === 0 ? 1 : 0;
+}
+
+// console.log(isPossible(5, [400000, 10000, 8000, 900, 30, 7]));
+
+// Given a matrix(2D array) M of size N*N consisting of 0s and 1s only.
+// The task is to find the column with maximum number of 0s. If more than
+// one column exists, print the one which comes first. If the maximum
+// number of 0s is 0 then return -1.
+
+function columnWithMaxZeros(M, n) {
+  let col = -1;
+  let sumVal = 0;
+  for (let i = 0; i < n; i++) {
+    let row = 0;
+    let count = 0;
+    while (row < n) {
+      // console.log(M[row][i]);
+      if (M[row][i] === 0) {
+        count++;
+      }
+      // console.log(count,sumVal,i);
+      if (count > sumVal) {
+        sumVal = count;
+        col = i;
+      }
+      row++;
+    }
+  }
+  return col === -1 ? -1 : col;
+}
+
+// console.log(
+//   columnWithMaxZeros(
+//     [
+//       [1, 1],
+//       [1, 1],
+//     ],
+//     2
+//   )
+// );
+
+// Given an array of integers of size N and a number K., You must modify array arr[]
+// exactly K number of times. Here modify array means in each operation you can replace
+//  any array element either arr[i] by -arr[i] or -arr[i] by arr[i]. You need to
+//  perform this operation in such a way that after K operations, the sum of the
+//  array must be maximum.
+
+function maximizeSum(arr, n, k) {
+  let sum = 0;
+  let kn = k;
+  let min = Number.MAX_SAFE_INTEGER;
+  arr.sort((a, b) => a - b);
+  console.log(arr, "lldddd");
+  for (let i = 0; i < n; i++) {
+    if (arr[i] < 0 && kn > 0) {
+      arr.splice(i, 1, -arr[i]);
+      kn -= 1;
+    }
+    sum += arr[i];
+    min = Math.min(min, arr[i]);
+  }
+  // console.log(arr, kn, sum - min, min);
+  console.log(arr, "ll");
+  if (kn % 2 !== 0 && kn !== 0) {
+    min = -min;
+    sum = sum + min * 2;
+  }
+  return sum;
+}
+
+console.log(maximizeSum([5, -2, 5, -4, 5, -12, 5, 5, 5, 20], 10, 5));
 
 console.log("run practice file");
