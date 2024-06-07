@@ -1337,6 +1337,21 @@ function maximizeSum(arr, n, k) {
   return sum;
 }
 
-console.log(maximizeSum([5, -2, 5, -4, 5, -12, 5, 5, 5, 20], 10, 5));
+// console.log(maximizeSum([5, -2, 5, -4, 5, -12, 5, 5, 5, 20], 10, 5));
+
+// Given an array of distinct elements which was initially sorted.
+// This array may be rotated at some unknown point. The task is to find the
+// minimum element in the given sorted and rotated array.
+function minNumber(arr, low, high) {
+  let n = arr.length - 1;
+  let min = Number.MAX_SAFE_INTEGER;
+  for (let i = n; i >= 0; i--) {
+    console.log(arr[i], min);
+    min = Math.min(min, arr[i]);
+  }
+  return min;
+}
+
+console.log(minNumber([2, 3, 4, 5, 6, 7, 8, 9, 10, 1], 1, 1));
 
 console.log("run practice file");
