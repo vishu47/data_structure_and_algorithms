@@ -144,7 +144,7 @@ function ispar(x) {
   //   b % 2,
   //   m % 2,
   //   s % 2,
-  //   b % 2 === 0 && m % 2 === 0 && s % 2 === 0
+  //   b % 2,===,0 && m % 2 === 0 && s % 2 === 0
   // );
 
   // if (b % 2 === 0 && m % 2 === 0 && s % 2 === 0) {
@@ -1352,6 +1352,67 @@ function minNumber(arr, low, high) {
   return min;
 }
 
-console.log(minNumber([2, 3, 4, 5, 6, 7, 8, 9, 10, 1], 1, 1));
+// console.log(minNumber([2, 3, 4, 5, 6, 7, 8, 9, 10, 1], 1, 1));
+
+// Given a sorted array with possibly duplicate elements. The task is to find indexes
+// of first and last occurrences of an element X in the given array.
+
+// Note: If the element is not present in the array return {-1,-1} as pair.
+
+function indexes(v, x) {
+  // const index = [-1, -1];
+  // for (let i = 0; i < v.length; i++) {
+  //   if (v[i] === x) {
+  //     index[0] = i;
+  //     break;
+  //   }
+  // }
+  // for (let i = v.length - 1; i >= 0; i--) {
+  //   console.log(v[i], v[i] === x, i);
+  //   if (v[i] === x) {
+  //     index[1] = i;
+  //     break;
+  //   }
+  // }
+  // return index;
+
+  // 2 pointers
+
+  let left = 0;
+  let right = v.length - 1;
+  let res = [-1, -1];
+  while (left <= right) {
+    if (v[left] === x) {
+      res[0] = Math.max(res[0], left);
+    }
+    if (v[right] === x) {
+      res[1] = Math.max(res[1], right);
+    }
+    if (res[0] < left) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+  return res;
+}
+
+// console.log(indexes([1, 3, 5, 5, 5, 5, 67, 123, 125], 5));
+
+// Given a non-negative number represented as a list of digits, add 1 to the number
+// (increment the number represented by the digits). The digits are stored such that
+// the most significant digit is first element of array.
+
+function increment(arr, n) {
+  let str = "";
+  let res = 0;
+  for (let i = 0; i < n; i++) {
+    str += arr[i];
+  }
+  res = parseInt(str) + 1;
+  return res.toString().split("");
+}
+
+console.log(increment([1, 2, 4], 3));
 
 console.log("run practice file");
