@@ -1404,15 +1404,52 @@ function indexes(v, x) {
 // the most significant digit is first element of array.
 
 function increment(arr, n) {
-  let str = "";
-  let res = 0;
-  for (let i = 0; i < n; i++) {
-    str += arr[i];
+  // MSD : most significant digit will be 1st element and
+  // LSD : Least Significant digit will be the last digit of list
+
+  for (let i = n - 1; i >= 0; i--) {
+    arr[i] = arr[i] + 1;
+    if (arr[i] <= 9) {
+      return arr;
+    }
+    arr[i] = 0;
   }
-  res = parseInt(str) + 1;
-  return res.toString().split("");
+
+  arr.unshift(1);
+  return arr;
 }
 
-console.log(increment([1, 2, 4], 3));
+// console.log(increment([1, 2, 4], 3));
+
+// You are given an array arr[] of length n, you have to re-construct the same array
+// arr[] in-place. The arr[i] after reconstruction will become arr[i] OR arr[i+1],
+// where OR is bitwise or. If for some i, i+1 does not exists, then do not change
+// arr[i].
+
+function game_with_number(arr, n) {
+  //code here
+  console.log(10 | 11);
+  for (let i = 0; i < n; i++) {
+    console.log(arr[i], arr[i + 1]);
+    if (arr[i + 1]) {
+      arr[i] = arr[i] | arr[i + 1];
+    }
+  }
+  return arr;
+}
+
+// console.log(game_with_number([10, 11, 1, 2, 3], 5));
+// console.log(game_with_number([5, 9, 2, 6], 4));
+
+// Given two sorted arrays arr and brr and a number x, find the pair whose sum is
+// closest to x and the pair has an element from each array. In the case of multiple
+// closest pairs return any one of them.
+// Note: Can return the two numbers in any manner. The driver code takes care of the
+// printing of the closest difference.
+
+function printClosest(arr, brr, n, m, x) {
+}
+
+console.log(printClosest([],[]))
 
 console.log("run practice file");
