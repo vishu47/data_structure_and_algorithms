@@ -1428,9 +1428,7 @@ function increment(arr, n) {
 
 function game_with_number(arr, n) {
   //code here
-  console.log(10 | 11);
   for (let i = 0; i < n; i++) {
-    console.log(arr[i], arr[i + 1]);
     if (arr[i + 1]) {
       arr[i] = arr[i] | arr[i + 1];
     }
@@ -1448,8 +1446,57 @@ function game_with_number(arr, n) {
 // printing of the closest difference.
 
 function printClosest(arr, brr, n, m, x) {
+  let a = 0;
+  let b = brr.length - 1;
+  let sum = 0;
+  let pair = [];
+  let lastDiff = Number.MAX_SAFE_INTEGER;
+  while (a < n && b >= 0) {
+    sum = arr[a] + brr[b];
+    console.log(sum);
+    let diff = Math.abs(sum - x);
+    if (diff < lastDiff) {
+      lastDiff = Math.min(lastDiff, diff);
+      pair[0] = arr[a];
+      pair[1] = brr[b];
+    }
+    if (sum > x) {
+      b--;
+    } else {
+      a++;
+    }
+  }
+  return pair;
 }
 
-console.log(printClosest([],[]))
+// console.log(printClosest([1, 1, 1, 4, 4, 5, 9, 10], [6, 7, 8, 10], 8, 4, 6));
 
+// Given an array arr of size n, the task is to check if the given array can be a level order representation of a Max Heap.
+
+function isMaxHeap(n, arr) {
+  //code here
+  let d = arr.length;
+
+  // Check for every internal node if it is greater than its children
+  for (let i = 0; i <= Math.floor((d - 2) / 2); i++) {
+    // Left child index
+    let left = 2 * i + 1;
+    // Right child index
+    let right = 2 * i + 2;
+
+    // If left child is greater than parent
+    if (left < d && arr[i] < arr[left]) {
+      return false;
+    }
+
+    // If right child is greater than parent
+    if (right < d && arr[i] < arr[right]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(isMaxHeap(6, [90, 15, 10, 7, 12, 2]));
 console.log("run practice file");
