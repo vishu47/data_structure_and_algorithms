@@ -1498,5 +1498,64 @@ function isMaxHeap(n, arr) {
   return true;
 }
 
-console.log(isMaxHeap(6, [90, 15, 10, 7, 12, 2]));
+// console.log(isMaxHeap(6, [90, 15, 10, 7, 12, 2]));
+
+// Given two arrays a and b both of size n. Given q queries in an array query each
+// having a positive integer x denoting an index of the array a. For each query,
+// your task is to find all the elements less than or equal to a[x] in the array b.
+
+function countElements(n, a, b, q, queries) {
+  // code here let\
+  // b.sort((a, b) => a - b);
+  // let final = [];
+  // for (let i = 0; i < q; i++) {
+  //   let elem = a[queries[i]];
+  //   let j = 0;
+  //   let count = 0;
+  //   while (j < n) {
+  //     if (elem >= b[j]) {
+  //       // console.log(elem, b[j], elem >= b[j]);
+  //       count++;
+  //     } else {
+  //       break;
+  //     }
+  //     j++;
+  //   }
+  //   final.push(count);
+  // }
+  // return final;
+
+  b.sort((x, y) => x - y);
+
+  // Helper function to perform binary search
+  function binarySearch(arr, target) {
+    let low = 0;
+    let high = arr.length;
+    
+    while (low < high) {
+      let mid = Math.floor((low + high) / 2);
+      if (arr[mid] <= target) {
+        low = mid + 1;
+      } else {
+        high = mid;
+      }
+    }
+    
+    return low;
+  }
+
+  let final = [];
+  
+  for (let i = 0; i < queries.length; i++) {
+    let elem = a[queries[i]];
+    // Perform binary search to find the count of elements <= elem
+    let count = binarySearch(b, elem);
+    final.push(count);
+  }
+  
+  return final;
+}
+
+console.log(countElements(4, [1, 1, 5, 5], [0, 1, 2, 3], 4, [0, 1, 2, 3]));
+
 console.log("run practice file");
