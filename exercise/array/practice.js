@@ -1531,7 +1531,7 @@ function countElements(n, a, b, q, queries) {
   function binarySearch(arr, target) {
     let low = 0;
     let high = arr.length;
-    
+
     while (low < high) {
       let mid = Math.floor((low + high) / 2);
       if (arr[mid] <= target) {
@@ -1540,22 +1540,64 @@ function countElements(n, a, b, q, queries) {
         high = mid;
       }
     }
-    
+
     return low;
   }
 
   let final = [];
-  
+
   for (let i = 0; i < queries.length; i++) {
     let elem = a[queries[i]];
     // Perform binary search to find the count of elements <= elem
     let count = binarySearch(b, elem);
     final.push(count);
   }
-  
+
   return final;
 }
 
-console.log(countElements(4, [1, 1, 5, 5], [0, 1, 2, 3], 4, [0, 1, 2, 3]));
+// console.log(countElements(4, [1, 1, 5, 5], [0, 1, 2, 3], 4, [0, 1, 2, 3]));
+
+// Given an array arr[] of size N of distinct elements and a number X, find if there is a pair in arr[] with product equal to X.
+function isProduct(arr, n, x) {
+  //code here
+  // failed some cases
+  // arr.sort((a,b) => a - b)
+  // let left = 0;
+  // let right = n - 1;
+  // while (left < right) {
+  //   let pr = arr[left] * arr[right];
+  //   if (x === pr) {
+  //     return true;
+  //   }
+  //   if (pr > x) {
+  //     right--;
+  //   }else{
+  //     left++;
+  //   }
+  // }
+  // return false;
+  // optimised solutions
+}
+
+// console.log(isProduct([10, 20, 9, 40], 4, 400));
+
+// The hiring team aims to find 3 candidates who are great collectively.
+//  Each candidate has his or her ability expressed as an integer.
+// 3 candidates are great collectively if product of their abilities is maximum.
+//  Given abilities of N candidates in an array arr[], find the maximum collective
+// ability from the given pool of candidates.
+
+function maxProduct(arr, n) {
+  //code here
+  let prod = 1;
+  arr.sort((a, b) => a - b);
+  for (let i = n - 1; i > n - 4; i--) {
+    prod *= arr[i];
+  }
+  return prod;
+}
+
+console.log(maxProduct([10, 3, 5, 6, 20], 5));
 
 console.log("run practice file");
