@@ -1,5 +1,9 @@
 a = [12, 3, 43, 35, 77, 8987, 35, 3525, 32, 523]
 
+
+# list is mutable
+
+
 # iterate by element
 for i in a:
     print(i, end=" ")
