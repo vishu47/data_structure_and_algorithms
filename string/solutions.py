@@ -63,7 +63,6 @@ def capitalizedString(st):
         if sp:
             sp = False
             continue
-
         if st[i] == " " and st[i + 1] != " ":
             csp = chr(ord(st[i + 1]) - 32)
             sss += " " + csp
@@ -93,5 +92,59 @@ def replaceConsonants(st):
     print(aa)
 
 
-ss = "maynameisvishnuAI"
-replaceConsonants(ss)
+# ss = "maynameisvishnuAI"
+# replaceConsonants(ss)
+
+
+def removeNonAlphabatics(st):
+    l = st.lower()
+    f = ""
+    for i in l:
+        x = ord(i)
+        if x >= 97 and x <= 122:
+            f += i
+    print(f)
+
+
+# ss = "mayn#am$e%#is@#@ish%#%nu@@!!AI"
+# removeNonAlphabatics(ss)
+
+
+def countChar(st):
+    f = 0
+    for i in st:
+        if i >= "0" and i <= "9":
+            f += 1
+    print(f)
+
+
+# ss = "78g67"
+# countChar(ss)
+
+
+def removeDuplicate(st):
+    f = ""
+    for i in st:
+        if i not in f:
+            f += i
+    print(f)
+
+
+ss = "egerggergergregregerg"
+# removeDuplicate(ss)
+
+
+def replaceSpacesWith(st):
+    # x = ss.replace(" ", "-")
+    f = ""
+    for i in st:
+        if i == " ":
+            f += "-"
+        else:
+            f += i
+    print(f)
+
+
+ss = "this is vishnu maurya"
+
+replaceSpacesWith(ss)
