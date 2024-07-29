@@ -4,23 +4,24 @@ ds = {}
 for num in lst:
     if num in ds:
         ds[num] += 1
-    ds[num] = 1
+    else:
+        ds[num] = 1
 
-# print(ds)
-
-
-d = {}
-for num in lst:
-    d[num] = d.get(num, 0) + 1
+print(ds)
 
 
-print(d)
+# d = {}
+# for num in lst:
+#     d[num] = d.get(num, 0) + 1
 
-maxVal = 0
-maxKey = ""
-for key, val in d.items():
-    if val > maxVal:
-        maxVal = val
-        maxKey = key
 
-print(f"{maxKey} : {maxVal}")
+# print(d)
+
+# maxVal = 0
+# maxKey = ""
+# for key, val in d.items():
+#     if val > maxVal:
+#         maxVal = val
+#         maxKey = key
+
+# print(f"{maxKey} : {maxVal}")
