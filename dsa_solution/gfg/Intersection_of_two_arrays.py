@@ -1,6 +1,14 @@
 def NumberofElementsInIntersection(a, b, n, m):
 
-    print(len(set(b).intersection(set(a))))
+    set_a = set(a)
+    s = set()
+
+    for elem in b:
+        if elem in set_a:
+            s.add(elem)
+    return len(s)
+
+    # print(len(set(b).intersection(set(a))))
 
     # count = 0
     # for num in a:
@@ -16,4 +24,6 @@ ar1 = [1, 2, 3, 4, 5, 6]
 n = len(ar1)
 ar2 = [3, 4, 5, 6, 7]
 m = len(ar2)
-NumberofElementsInIntersection(ar1, ar2, n, m)
+cc = NumberofElementsInIntersection(ar1, ar2, n, m)
+
+print(cc)
