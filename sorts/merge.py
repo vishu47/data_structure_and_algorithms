@@ -1,4 +1,4 @@
-def mergeSort():
+def mergeSort(arr):
     pass
 
 
