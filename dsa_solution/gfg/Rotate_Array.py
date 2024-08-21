@@ -6,6 +6,6 @@ def rotateArr(A, D, N):
 
 
 a = [1, 2, 3, 4, 5]
-d = 11
+d = 2
 n = 5
 rotateArr(a, d, n)

@@ -6,9 +6,11 @@ def pushZerosToEnd(arr, n):
             nonZ += 1
     for j in range(nonZ, n):
         arr[j] = 0
+    print(arr)
 
 
 # fill first with the non zeror elements and then fill other places with thw zero
 
 a = [3, 5, 0, 0, 4, 0, 8, 7]
-pushZerosToEnd(a, len(a))
+cc = pushZerosToEnd(a, len(a))
+print(cc)
