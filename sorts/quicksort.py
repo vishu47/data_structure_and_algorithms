@@ -21,7 +21,6 @@ def partition(arr, low, high):
 def quick(arr, low, high):
     if low < high:
         ind = partition(arr, low, high)
-        print(arr, ind)
         # partition array left and right
         quick(arr, low, ind - 1)
         quick(arr, ind + 1, high)
