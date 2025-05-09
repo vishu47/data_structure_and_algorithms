@@ -65,7 +65,38 @@ def factorial(n : int = 4):
         n -=1    
     print("factorial : ", fact)
     
-factorial()
+    
+    
+def findTheFactors(num = 60, d = 6):
+    n = num // 2
+    i = 1
+    while i < n:
+        if num % i == 0:
+            print(i, end = " ")
+        i+=1
+    
+    
+    
+def getFactors(num):
+    i = 1
+    count = 0
+    while i <= num:
+        if num % i == 0:
+            count+=1
+        i+=1
+    return count
+        
+def checkPrimeNumber(n):
+    factor = getFactors(n)
+    print(factor,'factorfactor')
+    if factor == 2:
+        return True    
+    return False    
+    
+    
+print(checkPrimeNumber(11))
+# findTheFactors()
+# factorial()
 # numberofevennumberinrange()    
 # printSumOfEvenNumberFromito()
 # printEvenNumber()
