@@ -92,9 +92,13 @@ def checkPrimeNumber(n):
     if factor == 2:
         return True    
     return False    
+
+
+
+
+
     
-    
-print(checkPrimeNumber(11))
+# print(checkPrimeNumber(11))
 # findTheFactors()
 # factorial()
 # numberofevennumberinrange()    
