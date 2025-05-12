@@ -1,5 +1,5 @@
 def pushZerosToEnd():
-    arr = [3,5,4,8]
+    arr = [3,5,0 ,9 ,0,4,8]
     # nz = 0
     # for i in range(0 , len(arr)):
     #     if(arr[i] != 0):
