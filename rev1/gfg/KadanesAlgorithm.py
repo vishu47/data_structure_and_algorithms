@@ -1,7 +1,7 @@
 # Maximum Subarray Sum – Kadane's Algorithm
 # loop and sum if sum is less than 0 then sum replace with 0 and move forword 
 def KadanesAlgorithm():
-    arr = [2, 3, -8, 7, -1, 2, 3]
+    arr = [-2, -4]
     # msum = float("-inf")
     # sum = 0
     # for i in range(0, len(arr)):
