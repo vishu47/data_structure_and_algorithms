@@ -15,6 +15,8 @@ def majorityElement():
     
     
     # moore voting algo
+    # suppose 1st as mejotity and if arr[i] wquals to mejority counte + 1 else count - 1 and at last you will get mejority element 
+    # you have mejority element and chekc is it is greater than m//2 
     m = 0
     c = 0
     for i in range(0 , len(arr)):
