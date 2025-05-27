@@ -1,9 +1,9 @@
 def LongestSubarraywithSumK():
     
-    arr = [94,-33,-13,40,-82,94,-33,-13,40,-82]
-    k = 52
-    # arr = [10,5,2,7,1,-10]
-    # k = 15
+    # arr = [94,-33,-13,40,-82,94,-33,-13,40,-82]
+    # k = 52
+    arr = [10,5,2,7,1,-10]
+    k = 15
     # l = 0
     
     # for i in range(0 ,len(arr)):
@@ -33,7 +33,8 @@ def LongestSubarraywithSumK():
             
         if sum not in pre_sum:
             pre_sum[sum] = i 
-            
+        
+        print(pre_sum)
     return l
 
     
