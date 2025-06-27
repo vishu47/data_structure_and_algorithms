@@ -18,7 +18,7 @@ def canWePlace(arr , mid , k):
 
 
 def aggresivecows():
-    arr = [6 4 3 16 20 7 18 10]
+    arr = [6,4,3,16,20,7,18,10]
     k = 3
     arr = sorted(arr)
     maxi = max(arr)
