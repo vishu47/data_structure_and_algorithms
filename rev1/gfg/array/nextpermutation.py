@@ -2,7 +2,8 @@
 # find swap with lowest number but greater than breakpoint number
 # remaining part would be always in decending order then reverse that array and done 
 def nextpermutation():
-    arr = [3,2,1]
+    # arr = [3,2,1]
+    arr = [2, 4, 1, 7, 5, 0]
     
     bindex = -1
     # edge case
@@ -19,13 +20,17 @@ def nextpermutation():
         return arr 
     
     for i in range(len(arr) -1 , -1 , -1):
+        print(arr[i] > arr[bindex],arr[i] , arr[bindex] , arr)
         if arr[i] > arr[bindex]:
             arr[bindex] , arr[i] =  arr[i] , arr[bindex]
             break
+    print(arr[i] > arr[bindex],arr[i] , arr[bindex] , arr , 'llllllll')
         
     
     rez = arr[bindex+1:]
+    print(arr , 'lllkk')
     rez.reverse()
+    print(arr , 'ppp')
     arr[bindex+1:] = rez
     
     return arr

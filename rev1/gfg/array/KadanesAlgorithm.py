@@ -25,13 +25,13 @@ def KadanesAlgorithm():
         if sum > msum:
             msum = sum
             st = start 
-            ed = i + 1
+            en = i + 1
         
         if sum < 0: 
             sum = 0
             
-    print(st , ed, msum)
-    return arr[st:ed]
+    print(st , en, msum)
+    return arr[st:en]
     
     
 print(KadanesAlgorithm())
