@@ -34,6 +34,7 @@ def findUnion(arr1, arr2, n, m):
     # res.sort()
     # return res
 
+    
     i, j = 0, 0
     res = []
     while i < n and j < m:
@@ -56,8 +57,8 @@ def findUnion(arr1, arr2, n, m):
     return res
 
 
-a = [-7, 8]
-b = [-8, -3, 8]
+a = [-5,-4,-1,1,7]
+b = [-3,0,1,8]
 l = 2
 m = 3
 cc = findUnion(a, b, len(a), len(b))

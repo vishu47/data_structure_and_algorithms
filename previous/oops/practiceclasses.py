@@ -1,3 +1,6 @@
+# encapsulation | abstraction | inheritance | polymorphism
+
+
 class MyHome:
     def __init__(
         self,
