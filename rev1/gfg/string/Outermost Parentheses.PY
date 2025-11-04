@@ -21,7 +21,7 @@ def OutermostParentheses():
             else:
                 st += i
             
-        print(st)
+        return st
                 
 
 print(OutermostParentheses())
