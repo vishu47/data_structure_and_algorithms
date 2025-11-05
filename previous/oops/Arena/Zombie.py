@@ -5,7 +5,7 @@ class Zombie(Enemy):
     
     
     # this si zombie constructor
-    def __init__(self , steps, enemy_damage, spread,health = 10):
+    def __init__(self , steps, enemy_damage, health = 10):
         # this is parent constructor 
         # when we implement inhritance we required to add super classes to get all the attr from the parent class
         # assign the properties
@@ -29,6 +29,6 @@ class Zombie(Enemy):
     def special_attack(self):
         did_special_attack_work = random.random() < 0.5
         if did_special_attack_work :
-           self.health += 2
            print(f'Zombie has regenerated health by 2')     
+           self.health += 2
         

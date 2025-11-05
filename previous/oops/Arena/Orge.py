@@ -5,7 +5,7 @@ class Orge(Enemy):
     
     
     # this si zombie constructor
-    def __init__(self , steps, enemy_damage , health):
+    def __init__(self , steps, enemy_damage , health = 10):
         # this is parent constructor 
         # when we implement inhritance we required to add super classes to get all the attr from the parent class
         # assign the properties
